@@ -1,0 +1,21 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: comsumer    # 对应config server所获取的配置文件的{application}
+  cloud:
+    config:
+      profile: dev      # profile对应config server所获取的配置文件中的{profile}
+      label: master     # 指定Git仓库的分支，对应config server所获取的配置文件的{label}
+      discovery:
+        enabled: true
+        service-id: config-server
+      name: eureka-client
+      client:
+        ipAddrss: localhost
+  rabbitmq:
+    host: 192.168.246.134
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#    instance-id: ${spring.cloud.config.client.ipAddrss}:${spring.application.name}:${server.port}
